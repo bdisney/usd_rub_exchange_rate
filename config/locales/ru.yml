@@ -1,0 +1,9 @@
+ru:
+  shared:
+    buttons:
+      add: Добавить
+  activerecord:
+    attributes:
+      exchange_rate:
+        value: Значение
+        valid_until: Действует до
