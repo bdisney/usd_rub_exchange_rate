@@ -1,7 +1,10 @@
-= form_for @rate do |f|
-  = f.label :value
-  = f.text_field :value
-
-  = f.label    :valid_until
-  = f.datetime_field :valid_until
-  = f.submit
+= form_for @rate, html: { class: 'form' } do |f|
+  .row
+    .form-group.col-md-6
+      = f.label :value
+      = f.text_field :value, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :valid_until
+      = f.datetime_field :valid_until, class: 'form-control'
+  = f.submit t('shared.buttons.add'), class: 'button btn btn-default'
