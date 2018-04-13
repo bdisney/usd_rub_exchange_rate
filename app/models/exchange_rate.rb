@@ -3,18 +3,15 @@ class ExchangeRate < ApplicationRecord
   SITE_URL     = 'http://free.currencyconverterapi.com/api/v3/convert?q=USD_RUB&compact=ultra'.freeze
 
   validates :value, :valid_until, presence: true
-  validate  :valid_until_date_should_be_greater_than_current
+
+  scope :valid_until_greater_than_current_date, -> { where('valid_until > ?', DateTime.current) }
 
   def self.current_rate
-    valid_exchange_rate_present? ? ExchangeRate.last.value : realtime_rate_for(USD_RUB_PAIR)
-  end
-
-  def valid_until_date_should_be_greater_than_current
-    return unless valid_until
-    errors.add(
-      :valid_until,
-      I18n.t('activerecord.errors.models.exchange_rate.attributes.valid_until.should_be_greater_than')
-    ) if valid_until < Date.current
+    if valid_until_greater_than_current_date.present?
+      ExchangeRate.last
+    else
+      ExchangeRate.new(value: realtime_rate_for(USD_RUB_PAIR))
+    end
   end
 
   private
@@ -23,10 +20,5 @@ class ExchangeRate < ApplicationRecord
     uri      = URI(SITE_URL)
     response = Net::HTTP.get(uri)
     format '%.2f', JSON.parse(response)[pair_rate]
-  end
-
-  def self.valid_exchange_rate_present?
-    return false unless ExchangeRate.last
-    ExchangeRate.last.valid_until > Date.current
   end
 end
