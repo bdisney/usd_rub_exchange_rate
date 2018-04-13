@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20180412150821) do
   enable_extension "plpgsql"
 
   create_table "exchange_rates", force: :cascade do |t|
-    t.decimal  "value",       precision: 12, scale: 1
+    t.decimal  "value",       precision: 6, scale: 2
     t.datetime "valid_until"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
 end
