@@ -18,6 +18,6 @@ class ExchangeRatesController < ApplicationController
 
   #можно использовать callback в модели, но это вопрос для обсуждения
   def update_exchange_rate_channel
-    ExchangeRatesJob.perform_now
+    ExchangeRatesJob.perform_later
   end
 end
