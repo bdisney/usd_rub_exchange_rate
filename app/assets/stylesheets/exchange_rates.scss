@@ -1,4 +1,8 @@
-body { padding-top: 50px; }
+body {
+  padding-top: 50px;
+  background-color: black;
+  color: white;
+}
 
 .field_with_errors label {
   color: #d9534f;
@@ -6,4 +10,17 @@ body { padding-top: 50px; }
 
 .field_with_errors .form-control {
   border-color: #d9534f;
+}
+
+.js-exchange-rate {
+  font-size: 20vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  p {
+    line-height: 100%;
+    font-size: 3vw;
+    color: gray;
+  }
 }

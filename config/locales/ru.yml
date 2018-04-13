@@ -19,3 +19,4 @@ ru:
       exchange_rate:
         value: Значение
         valid_until: Действует до
+        rubles_per_one_usd: рублей за доллар
