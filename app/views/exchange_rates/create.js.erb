@@ -1,0 +1,4 @@
+<% if @rate.errors.any? %>
+  $('.flash-messages').html('<%= j render partial: 'shared/errors', locals: { resource: @rate } %>')
+  $('.form').replaceWith('<%= j render partial: 'form' %>')
+<% end %>

@@ -3,6 +3,18 @@ ru:
     buttons:
       add: Добавить
   activerecord:
+    errors:
+      header_title: 'При сохранении произошли следующие ошибки:'
+      models:
+        exchange_rate:
+          attributes:
+            default_settings: &default_settings
+              blank: не может быть пустым
+            value:
+              <<: *default_settings
+            valid_until:
+              <<: *default_settings
+              should_be_greater_than: должно быть больше текущих даты и времени
     attributes:
       exchange_rate:
         value: Значение
