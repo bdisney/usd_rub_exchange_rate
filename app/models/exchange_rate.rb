@@ -1,6 +1,7 @@
 class ExchangeRate < ApplicationRecord
-  USD_RUB_PAIR = 'USD_RUB'.freeze
-  SITE_URL     = 'http://free.currencyconverterapi.com/api/v3/convert?q=USD_RUB&compact=ultra'.freeze
+  RUB_SYMBOL = 'RUB'.freeze
+  SITE_URL   = 'https://openexchangerates.org/api/latest.json?'
+  APP_ID     = ENV['APP_ID']
 
   validates :value, :valid_until, presence: true
 
@@ -10,15 +11,13 @@ class ExchangeRate < ApplicationRecord
     if valid_until_greater_than_current_date.present?
       ExchangeRate.last
     else
-      ExchangeRate.new(value: realtime_rate_for(USD_RUB_PAIR))
+      ExchangeRate.new(value: get_external_value)
     end
   end
 
-  private
-
-  def self.realtime_rate_for(pair_rate)
-    uri      = URI(SITE_URL)
-    response = Net::HTTP.get(uri)
-    format '%.2f', JSON.parse(response)[pair_rate]
+  def self.get_external_value
+    response = Connection.get(SITE_URL, APP_ID, RUB_SYMBOL)
+    return unless response.code == '200'
+    JSON.parse(response.body)['rates'][RUB_SYMBOL]
   end
 end
