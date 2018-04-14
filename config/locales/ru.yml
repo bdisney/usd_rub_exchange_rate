@@ -5,6 +5,8 @@ ru:
     links:
       back: Back
       admin_page: Very secret admin page
+    messages:
+      fixed: Курс зафиксирован!
   activerecord:
     errors:
       header_title: 'При сохранении произошли следующие ошибки:'

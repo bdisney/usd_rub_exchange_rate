@@ -1,18 +1,16 @@
 class ExchangeRatesController < ApplicationController
+  helper_method :success_flash_message
+
   before_action :set_rate, only: :update
   after_action  :update_exchange_rate_channel, only: %i[create update]
 
-  def new
-    @rate = ExchangeRate.last || ExchangeRate.new
-  end
-
   def create
     @rate = ExchangeRate.new(exchange_rate_params)
-    @rate.save
+    success_flash_message if @rate.save
   end
 
   def update
-    @rate.update(exchange_rate_params)
+    success_flash_message if @rate.update(exchange_rate_params)
     respond_to do |format|
       format.js { render 'create.js.erb' }
     end
@@ -31,5 +29,9 @@ class ExchangeRatesController < ApplicationController
 
   def set_rate
     @rate = ExchangeRate.find(params[:id])
+  end
+
+  def success_flash_message
+    flash.now[:success] = t('shared.messages.fixed')
   end
 end
