@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'vcr'
-require 'support/vcr_setup'
 
 RSpec.describe ExchangeRate, type: :model do
   it { should validate_presence_of :value }
