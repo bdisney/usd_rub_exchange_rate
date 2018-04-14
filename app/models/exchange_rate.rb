@@ -15,6 +15,8 @@ class ExchangeRate < ApplicationRecord
     end
   end
 
+  private
+
   def self.get_external_value
     response = Connection.get(SITE_URL, APP_ID, RUB_SYMBOL)
     return unless response.code == '200'
