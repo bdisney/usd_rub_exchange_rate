@@ -50,6 +50,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'webmock'
   gem 'vcr'
+  gem 'capybara', '~> 2.10', '>= 2.10.1'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -63,6 +66,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
