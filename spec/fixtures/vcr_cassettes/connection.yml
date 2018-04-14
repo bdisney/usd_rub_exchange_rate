@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openexchangerates.org/api/latest.json?app_id=<APP_ID>&symbols=RUB
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - openexchangerates.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 14 Apr 2018 16:31:21 GMT
+      Etag:
+      - '"1f18c781deda26ce065a76d98f1efaad"'
+      Last-Modified:
+      - Sat, 14 Apr 2018 16:00:33 GMT
+      Server:
+      - nginx/1.12.1
+      Content-Length:
+      - '216'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
+          "license": "https://openexchangerates.org/license",
+          "timestamp": 1523721550,
+          "base": "USD",
+          "rates": {
+            "RUB": 62.0238
+          }
+        }
+    http_version: 
+  recorded_at: Sat, 14 Apr 2018 16:31:21 GMT
+recorded_with: VCR 4.0.0
