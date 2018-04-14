@@ -1,2 +1,5 @@
-= ExchangeRate.current_rate.value
-p = t('activerecord.attributes.exchange_rate.rubles_per_one_usd')
+- if rate = ExchangeRate.current_rate.value
+  = rate
+  p = t('activerecord.attributes.exchange_rate.rubles_per_one_usd')
+- else
+  = t('activerecord.attributes.exchange_rate.no_rate')

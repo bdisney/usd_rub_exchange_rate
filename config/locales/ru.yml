@@ -1,7 +1,10 @@
 ru:
   shared:
     buttons:
-      add: Добавить
+      add: Зафиксировать
+    links:
+      back: Back
+      admin_page: Very secret admin page
   activerecord:
     errors:
       header_title: 'При сохранении произошли следующие ошибки:'
@@ -20,3 +23,4 @@ ru:
         value: Значение
         valid_until: Действует до
         rubles_per_one_usd: рублей за доллар
+        no_rate: 404
