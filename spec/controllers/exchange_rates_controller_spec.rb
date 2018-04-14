@@ -1,24 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ExchangeRatesController, type: :controller do
-  describe 'GET#new' do
-    context 'when exchange rate currently exist' do
-      let!(:exchange_rate) { create(:exchange_rate) }
-
-      it 'assigns new rate to last rate' do
-        process :new, method: :get
-        expect(assigns(:rate)).to eq(exchange_rate)
-      end
-    end
-
-    context 'when exchange rates does not exist' do
-      it 'assigns new rate to new instance of ExchangeRate' do
-        process :new, method: :get
-        expect(assigns(:rate)).to be_a_new(ExchangeRate)
-      end
-    end
-  end
-
   describe 'POST#create' do
     context 'with valid attributes' do
       let(:create_process) {
