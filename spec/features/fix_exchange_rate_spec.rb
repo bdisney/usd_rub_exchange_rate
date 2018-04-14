@@ -42,7 +42,7 @@ feature 'Fix exchange rate', %q{
     expect(page).not_to have_content(value)
 
     switch_to_window(windows.last)
-    visit ('http://localhost:3000/admin')
+    visit admin_path
 
     fill_in 'exchange_rate_value', with: value
     fill_in 'exchange_rate_valid_until', with: valid_date
