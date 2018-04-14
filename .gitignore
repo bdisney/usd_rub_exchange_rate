@@ -19,3 +19,4 @@
 .idea
 .database.yml
 /dump.rdb
+/.env.development
