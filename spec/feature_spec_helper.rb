@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.configure do |config|
   Capybara.javascript_driver = :webkit
   Capybara.server = :puma
-
   Capybara::Webkit.configure(&:block_unknown_urls)
-  Capybara.default_max_wait_time = 5
 
   config.use_transactional_fixtures = false
 
@@ -18,6 +16,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
     DatabaseCleaner.strategy = :truncation
   end
 

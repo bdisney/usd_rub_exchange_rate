@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
+  mount ActionCable.server => '/cable'
 
   root to: 'home#index', as: :home
 

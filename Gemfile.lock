@@ -94,8 +94,6 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    fakeredis (0.7.0)
-      redis (>= 3.2, < 5.0)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -267,7 +265,6 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_bot_rails
-  fakeredis
   jbuilder (~> 2.5)
   jquery-datetimepicker-rails
   jquery-rails
