@@ -1,5 +1,6 @@
-# USD/RUB exchange rate
+https://travis-ci.org/bdisney/usd_rub_exchange_rate.svg?branch=master
 
+# USD/RUB exchange rate 
 
 Приложение содержит две страницы: / и /admin
 
