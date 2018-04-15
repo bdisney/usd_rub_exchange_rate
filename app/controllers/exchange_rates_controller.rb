@@ -24,6 +24,7 @@ class ExchangeRatesController < ApplicationController
 
   #можно использовать callback в модели, но это вопрос для обсуждения
   def update_exchange_rate_channel
+    return if @rate.errors.any?
     ExchangeRatesJob.perform_later
   end
 
