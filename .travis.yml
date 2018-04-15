@@ -5,7 +5,7 @@ rvm: 2.3.3
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rake spec
+  - xvfb-run bundle exec rspec
 before_script:
   - cp config/database.yml.sample config/database.yml
 services:
