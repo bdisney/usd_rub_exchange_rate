@@ -32,23 +32,4 @@ feature 'Fix exchange rate', %q{
       text: "#{ExchangeRate.human_attribute_name(:valid_until)} #{blank_error_message}"
     )
   end
-
-  scenario 'All users see fixed exchange rate in real-time', js: true do
-    value      = '666.77'
-    valid_date = '22.04.2118, 22:36'
-
-    open_new_window
-    visit home_path
-    expect(page).not_to have_content(value)
-
-    switch_to_window(windows.last)
-    visit admin_path
-
-    fill_in 'exchange_rate_value', with: value
-    fill_in 'exchange_rate_valid_until', with: valid_date
-    find('input[name="commit"]').click
-
-    switch_to_window(windows.first)
-    expect(page).to have_text(value)
-  end
 end
