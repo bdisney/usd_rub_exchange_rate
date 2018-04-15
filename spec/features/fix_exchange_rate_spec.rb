@@ -32,4 +32,28 @@ feature 'Fix exchange rate', %q{
       text: "#{ExchangeRate.human_attribute_name(:valid_until)} #{blank_error_message}"
     )
   end
+
+  scenario 'All users see fixed exchange rate in real-time', js: true do
+    visit home_path
+
+    Capybara.using_session('guest') do
+      visit home_path
+    end
+
+    Capybara.using_session('admin') do
+      visit admin_path
+    end
+
+    Capybara.using_session('admin') do
+      fill_in 'exchange_rate_value', with: '36.6'
+      fill_in 'exchange_rate_valid_until', with: '01.12.2118, 22:22'
+      find('input[name="commit"]').click
+
+      expect(page).to have_selector('.flash-messages', text: I18n.t('shared.messages.fixed'))
+    end
+
+    Capybara.using_session('guest') do
+      expect(page).to have_content '36.6'
+    end
+  end
 end
