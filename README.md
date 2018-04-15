@@ -1,4 +1,4 @@
-https://travis-ci.org/bdisney/usd_rub_exchange_rate.svg?branch=master
+[![Build Status](https://travis-ci.org/bdisney/usd_rub_exchange_rate.svg?branch=master)](https://travis-ci.org/bdisney/usd_rub_exchange_rate)
 
 # USD/RUB exchange rate 
 
