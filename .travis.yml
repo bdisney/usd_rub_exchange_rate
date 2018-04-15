@@ -7,7 +7,7 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rake spec
 before_script:
-  - cp config/database.yml.travis config/database.yml.sample
+  - cp config/database.yml.sample config/database.yml
 services:
   - redis-server
   - postgresql
